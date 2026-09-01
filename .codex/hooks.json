@@ -1,0 +1,77 @@
+{
+  "description": "Six portable lifecycle dispatchers for CTXRoute and architecture-first governance.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./.codex/hooks/lifecycle.mjs codex SessionStart",
+            "timeout": 30,
+            "additionalContextLimit": 0
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./.codex/hooks/lifecycle.mjs codex PreToolUse",
+            "timeout": 45,
+            "additionalContextLimit": 0
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "apply_patch|Edit|Write|exec_command|Bash|Shell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./.codex/hooks/lifecycle.mjs codex PostToolUse",
+            "timeout": 45,
+            "additionalContextLimit": 0
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./.codex/hooks/lifecycle.mjs codex Stop",
+            "timeout": 120,
+            "additionalContextLimit": 0
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./.codex/hooks/lifecycle.mjs codex UserPromptSubmit",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./.codex/hooks/lifecycle.mjs codex PreCompact",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

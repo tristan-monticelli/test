@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "status": "template",
+  "tooling": {
+    "runtime": "node",
+    "packageManager": "npm"
+  },
+  "decisions": {
+    "language": "not applicable: blueprint tooling only",
+    "runtime": "Node.js 22+ for repository governance; derived product is undecided",
+    "frontend": "none: no product UI is selected",
+    "backend": "none: no product service is selected",
+    "storage": "none: product storage is undecided; local SQLite is tooling-only",
+    "deployment": "none: documentation artifacts only; derived product decides deployment",
+    "observability": "CI logs and sanitized validation artifacts only",
+    "security": "minimal CI permissions, pinned actions, local hooks, and Sensor gates",
+    "performance": "bounded setup and single-flight local tooling; product budgets undecided"
+  },
+  "commands": {
+    "test": "npm test",
+    "initialize": "npm run initialize",
+    "lint": null,
+    "typecheck": null,
+    "mutation": null,
+    "integration": null,
+    "build": "npm run build:docs",
+    "workspaceCheck": "npm run workspace:check",
+    "crgUpdate": "npm run crg:update",
+    "crgWatcher": "npm run watch:crg",
+    "governanceCheck": "npm run governance:check",
+    "progressRead": "npm run progress:read",
+    "progressValidate": "npm run progress:validate",
+    "progressApprove": "npm run progress:approve",
+    "progressMcp": "npm run progress:mcp",
+    "contextMcp": "npm run context:mcp",
+    "astCheck": "npm run ast:check",
+    "contextBenchmark": "npm run context:benchmark",
+    "mermaid": null
+  },
+  "quality": {
+    "mutation": {
+      "decision": "not-applicable",
+      "preCommit": false,
+      "prePush": false
+    }
+  },
+  "directories": {
+    "source": ["packages/", "scripts/"],
+    "tests": ["tests/"],
+    "generated": ["coverage/", "dist/", "build/", ".ctxroute/state/"]
+  },
+  "codeExtensions": [".js", ".mjs", ".json"],
+  "architecture": {
+    "documents": [
+      "docs/architecture/src/blueprint.architecture.json"
+    ],
+    "project": "docs/architecture/src/blueprint.architecture.json"
+  },
+  "contracts": {
+    "patterns": [
+      "package.json",
+      "**/package.json",
+      "**/package-lock.json",
+      "**/pnpm-lock.yaml",
+      "**/yarn.lock",
+      "**/bun.lock",
+      "**/pyproject.toml",
+      "**/requirements*.txt",
+      "**/Pipfile",
+      "**/poetry.lock",
+      "**/uv.lock",
+      "**/Cargo.toml",
+      "**/Cargo.lock",
+      "**/go.mod",
+      "**/go.sum",
+      "**/pom.xml",
+      "**/build.gradle",
+      "**/build.gradle.kts",
+      "**/composer.json",
+      "**/composer.lock",
+      "**/Gemfile",
+      "**/Gemfile.lock",
+      "**/*.proto",
+      "**/openapi*.yaml",
+      "**/openapi*.yml",
+      "**/openapi*.json",
+      "**/*.graphql",
+      "**/*.gql"
+    ]
+  },
+  "starter": {
+    "infrastructureRoots": [
+      ".codex/",
+      ".claude/",
+      ".githooks/",
+      ".github/",
+      ".project/",
+      "docs/",
+      "packages/",
+      "scripts/",
+      "tests/",
+      ".devcontainer/"
+    ],
+    "rootFiles": [
+      ".gitignore",
+      ".mcp.json",
+      ".gitmessage",
+      ".gitattributes",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "CONTRIBUTING.md",
+      "LICENSE",
+      "NOTICE",
+      "README.md",
+      "SECURITY.md",
+      "THIRD_PARTY_NOTICES.md",
+      "ctxroute-config.json",
+      "package.json",
+      "package-lock.json",
+      "skills-lock.json"
+    ]
+  }
+}
